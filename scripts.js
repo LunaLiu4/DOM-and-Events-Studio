@@ -7,7 +7,7 @@ function init() {
 
     const land = document.getElementById('landing');
     const missionAbort = document.getElementById('missionAbort');
-    let image = document.getElementById('rocket');
+    const rocket = document.getElementById('rocket');
     const upClick = document.getElementById('up');
     const downClick = document.getElementById('down');
     const rightClick = document.getElementById('right');
@@ -33,28 +33,38 @@ function init() {
         let abortMission = confirm('Confirm that you want to abort the mission.');
         if (abortMission) {
             flightStatus.innerHTML = 'Mission aborted.';
-            color.style['backgroundColor'] = 'green';
+            color.style.backgroundColor = 'green';
             document.getElementById('spaceShuttleHeight').innerHTML = 0;
         }
     })
-    upClick.addEventListener('click', event => {
-        let up = parseInt(image.style.top);
+    upClick.addEventListener('click', () => {
+        let top = parseInt(rocket.style.top) || 0;
         let height = parseInt(document.getElementById('spaceShuttleHeight').innerHTML);
-        console.log(up);
-        image.style.top = (up - 10) + "px";
+        rocket.style.top = (top - 10) + "px";
         height += 10000;
         document.getElementById('spaceShuttleHeight').innerHTML = height;
     })
-    downClick.addEventListener('click', event => {
-        let top = parseInt(image.style.top) || 0;
+    downClick.addEventListener('click', () => {
+        let top = parseInt(rocket.style.top) || 0;
         let height = parseInt(document.getElementById('spaceShuttleHeight').innerHTML);
-
-        console.log(image.style.right);
-        console.log(top);
-        image.style.top = (top + 10) + "px";
+        rocket.style.top = (top + 10) + "px";
         height -= 10000;
         document.getElementById('spaceShuttleHeight').innerHTML = height;
     })
 
+    leftClick.addEventListener('click', () => {
+        let left = parseInt(rocket.style.left) || 0;
+        // console.log(left);
+        // console.log(rocket.style.right)
+        rocket.style.left = (left - 10) + "px";
+        // console.log(rocket.style.left)
+    })
+
+    rightClick.addEventListener('click', () => {
+        let left = parseInt(rocket.style.left) || 0;
+        // console.log(left);
+        rocket.style.left = (left + 10) + "px";
+        // console.log(rocket.style.left)
+    })
 }
 window.addEventListener('load', init);
