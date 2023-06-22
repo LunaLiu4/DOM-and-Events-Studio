@@ -54,10 +54,8 @@ function init() {
 
     leftClick.addEventListener('click', () => {
         let left = parseInt(rocket.style.left) || 0;
-        // console.log(left);
-        // console.log(rocket.style.right)
         rocket.style.left = (left - 10) + "px";
-        // console.log(rocket.style.left)
+        // console.log(rocket.style.left);
     })
 
     rightClick.addEventListener('click', () => {
